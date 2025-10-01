@@ -1,0 +1,186 @@
+openapi: 3.0.0
+info:
+  title: Todo List API
+
+servers:
+  - url: http://localhost:5000/api
+
+paths:
+  /todos:
+    get:
+      summary: Получить список всех дел
+      parameters:
+        - name: status
+          in: query
+          description: Фильтр по статусу (true/false)
+          schema:
+            type: string
+        - name: sort_by
+          in: query
+          description: Поле для сортировки (id/text/status)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успешный запрос
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    
+    post:
+      summary: Добавить новое дело
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoInput'
+      responses:
+        '201':
+          description: Дело успешно создано
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+
+  /todos/{id}:
+    put:
+      summary: Обновить текст дела
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+      responses:
+        '200':
+          description: Дело успешно обновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+    
+    delete:
+      summary: Удалить дело
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Дело успешно удалено
+
+  /todos/{id}/complete:
+    patch:
+      summary: Отметить дело как выполненное
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Статус обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+
+  /todos/{id}/uncomplete:
+    patch:
+      summary: Отметить дело как невыполненное
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Статус обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+
+    /todos/bulk:
+    post:
+      summary: Заменить весь список дел
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TodoInput'
+      responses:
+        '201':
+          description: Список дел полностью заменен
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  todos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Todo'
+
+
+
+
+
+
+
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Уникальный идентификатор дела
+        text:
+          type: string
+          description: Текст дела
+        status:
+          type: boolean
+          description: Статус выполнения
+      example:
+        id: 1
+        text: "Купить молоко"
+        status: false
+    
+    TodoInput:
+      type: object
+      required:
+        - text
+      properties:
+        text:
+          type: string
+          description: Текст дела
+        status:
+          type: boolean
+          description: Статус выполнения
+          default: false
+      example:
+        text: "Купить молоко"
+        status: false

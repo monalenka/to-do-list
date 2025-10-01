@@ -118,9 +118,9 @@ class TaskList {
         };
     }
 
-    onTaskUpdate(taskId, newText) {
+    async onTaskUpdate(taskId, newText) {
         try {
-            const updatedTask = window.taskService.updateTaskText(taskId, newText);
+            const updatedTask = await window.taskService.updateTaskText(taskId, newText);
             if (updatedTask) {
                 this.updateTask(taskId, updatedTask);
                 this.showNotification('Задача обновлена', 'success');
@@ -130,9 +130,9 @@ class TaskList {
         }
     }
 
-    onTaskDelete(taskId) {
+    async onTaskDelete(taskId) {
         try {
-            const deleted = window.taskService.deleteTask(taskId);
+            const deleted = await window.taskService.deleteTask(taskId);
             if (deleted) {
                 this.removeTask(taskId);
                 this.showNotification('Задача удалена', 'success');
@@ -142,9 +142,9 @@ class TaskList {
         }
     }
 
-    onTaskToggle(taskId) {
+    async onTaskToggle(taskId) {
         try {
-            const updatedTask = window.taskService.toggleTaskStatus(taskId);
+            const updatedTask = await window.taskService.toggleTaskStatus(taskId);
             if (updatedTask) {
                 this.updateTask(taskId, updatedTask);
                 const status = updatedTask.completed ? 'выполнена' : 'не выполнена';

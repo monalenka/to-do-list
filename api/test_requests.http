@@ -1,0 +1,66 @@
+
+###
+GET http://localhost:5000/api/todos
+
+###
+POST http://localhost:5000/api/todos
+Content-Type: application/json
+
+{
+    "text": "Купить молоко",
+    "status": false
+}
+
+
+###
+GET http://localhost:5000/api/todos?status=true
+
+
+###
+PATCH http://localhost:5000/api/todos/1/complete
+
+###
+PATCH http://localhost:5000/api/todos/1/uncomplete
+
+###
+PUT http://localhost:5000/api/todos/1
+Content-Type: application/json
+
+{
+    "text": "Купить свежее молоко"
+}
+
+###
+DELETE http://localhost:5000/api/todos/1
+
+
+### добавление без удаления
+POST http://localhost:5000/api/todos/batch
+Content-Type: application/json
+
+[
+    {
+        "text": "Дополнительное дело 1",
+        "status": false
+    }
+]
+
+
+### новый список дел с удалением старых дел
+POST http://localhost:5000/api/todos/bulk
+Content-Type: application/json
+
+[
+    {
+        "text": "Новое дело 1",
+        "status": false
+    },
+    {
+        "text": "Новое дело 2",
+        "status": true
+    },
+    {
+        "text": "Новое дело 3",
+        "status": false
+    }
+]

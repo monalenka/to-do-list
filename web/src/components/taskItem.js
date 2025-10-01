@@ -90,7 +90,7 @@ class TaskItem {
         const editBtn = element.querySelector('.btn-edit');
 
         const newText = editInput.value.trim();
-        
+
         if (newText && newText !== this.task.text) {
             try {
                 this.onUpdate(this.task.id, newText);
