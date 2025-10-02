@@ -29,3 +29,21 @@ dist/
 htmlcov/
 .coverage
 
+
+
+Mobile/app/build
+*.iml
+.gradle
+Mobile/local.properties
+Mobile/.idea/caches
+Mobile/.idea/libraries
+Mobile/.idea/modules.xml
+Mobile/.idea/workspace.xml
+Mobile/.idea/navEditor.xml
+Mobile/.idea/assetWizardSettings.xml
+.DS_Store
+Mobile/build
+Mobile/captures
+.externalNativeBuild
+.cxx
+Mobie/local.properties

@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Базовая тема приложения -->
+    <style name="Theme.TodoList" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/secondary_color</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/gradient_end</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">@color/gradient_start</item>
+        <item name="android:navigationBarColor">@color/gradient_start</item>
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+    </style>
+
+    <!-- Альтернативная тема с AppCompat для совместимости -->
+    <style name="Theme.TodoList.AppCompat" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/gradient_end</item>
+        <item name="colorAccent">@color/secondary_color</item>
+        <item name="android:statusBarColor">@color/gradient_start</item>
+        <item name="android:navigationBarColor">@color/gradient_start</item>
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+    </style>
+
+    <!-- Стили для кнопок -->
+    <style name="Widget.TodoList.Button.Gradient" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_gradient</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:translationZ">2dp</item>
+    </style>
+</resources>
