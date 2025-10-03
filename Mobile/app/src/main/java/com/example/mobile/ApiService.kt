@@ -27,7 +27,7 @@ interface TodoApiService {
 }
 
 object TodoApi {
-    private const val BASE_URL = "https://b24700db8daca2.lhr.life/api/"
+    private const val BASE_URL = "https://2c26dea106e0bb.lhr.life/api/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
